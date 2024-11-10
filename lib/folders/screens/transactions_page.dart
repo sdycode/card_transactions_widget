@@ -72,9 +72,8 @@ class _TransactionsPageState extends State<TransactionsPage> {
               ],
             ),
             Expanded(
-              child: FutureBuilder<YearData?>(
-                future:
-                    DataService.instance.loadYearlyTransactions(currentYear),
+              child: FutureBuilder<bool>(
+                future: loadData(),
                 builder: (context, snapshot) {
                   // Loading state
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -100,22 +99,16 @@ class _TransactionsPageState extends State<TransactionsPage> {
                   }
 
                   // Success state
-                  if (snapshot.hasData) {
-                    final data = snapshot.data!;
+                  if (snapshot.hasData &&
+                      DataService.instance.allYearsData[currentYear] != null) {
                     return Column(
-                      // padding: const EdgeInsets.all(16),
                       children: [
-                        // const Text(
-                        //   'Yearly Transactions Data Loaded',
-                        //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                        // ),
                         const SizedBox(height: 16),
-                        // Text(data
-                        //     .toString()), // Display the JSON data as text (for testing)
                         Expanded(
                           child: CalendarGridView(
                             year: currentYear,
-                            yearData: DataService.instance. allYearsData[currentYear]!,
+                            yearData:
+                                DataService.instance.allYearsData[currentYear]!,
                           ),
                         )
                       ],

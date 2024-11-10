@@ -1,12 +1,20 @@
  
-import 'package:transcation_history/folders/screens/generate_mockdata.dart';
 import 'package:transcation_history/lib.dart';
-
+import 'firebase_options.dart';
+ 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  try {
+    if (kIsWeb) {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+    }
+  } catch (e) {}
+
   FlutterError.onError = (FlutterErrorDetails details) {
     runApp(MyApp(error: details.exception.toString()));
-  };
+  };  
   runApp(const MyApp());
 }
 
@@ -20,7 +28,9 @@ class MyApp extends StatelessWidget {
     // If an error exists, show a custom error page
     if (error != null) {
       return MaterialApp(
-        home: ErrorScreen(errorMessage: error!),
+        home: ErrorScreen(errorMessage: "Some error occured"
+            // error!
+            ),
       );
     }
     // Otherwise, show your regular app
@@ -33,8 +43,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Builder(builder: (context) {
         updateRadius(context);
-        return 
-         const TransactionsPage();
+        return const TransactionsPage();
       }),
     );
   }

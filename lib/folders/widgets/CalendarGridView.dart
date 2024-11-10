@@ -138,80 +138,86 @@ class _CalendarGridViewState extends State<CalendarGridView> {
               ],
             );
           })
-        : Row(
-            children: [
-              // Row for day names (Sun, Mon, Tue, ...)
-              Column(
-                children: List.generate(totalRows + 1, (index) {
-                  return Container(
-                    margin: const EdgeInsets.all(8),
-                    width: 50,
-                    height: 50,
-                    alignment: Alignment.center,
-                    color: Colors.black45,
-                    child: Text(
-                      index == 0 ? "Month" : daysOfWeek[index - 1],
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  );
-                }),
-              ),
-
-              // Grid with weeks and days
-              Expanded(
-                child: Column(
+        : SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
                   children: [
-                    Scrollbar(
-                      controller: scrollController,
-                      scrollbarOrientation: ScrollbarOrientation.bottom,
+                    // Row for day names (Sun, Mon, Tue, ...)
+                    Column(
+                      children: List.generate(totalRows + 1, (index) {
+                        return Container(
+                          margin: const EdgeInsets.all(8),
+                          width: 50,
+                          height: 50,
+                          alignment: Alignment.center,
+                          color: Colors.black45,
+                          child: Text(
+                            index == 0 ? "Month" : daysOfWeek[index - 1],
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        );
+                      }),
+                    ),
 
-                      interactive: true,
-                      thumbVisibility: true, // Always show the thumb
-                      trackVisibility: true, //
-                      child: SingleChildScrollView(
-                        controller: scrollController,
-                        scrollDirection: Axis.horizontal,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: List.generate(12, (i) {
-                                return Container(
-                                  width: 50 * 4.25 + 16 * 4.25,
-                                  height: 50,
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    months[i],
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.w600),
+                    // Grid with weeks and days
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Scrollbar(
+                            controller: scrollController,
+                            scrollbarOrientation: ScrollbarOrientation.bottom,
+
+                            interactive: true,
+                            thumbVisibility: true, // Always show the thumb
+                            trackVisibility: true, //
+                            child: SingleChildScrollView(
+                              controller: scrollController,
+                              scrollDirection: Axis.horizontal,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: List.generate(12, (i) {
+                                      return Container(
+                                        width: 50 * 4.25 + 16 * 4.25,
+                                        height: 50,
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          months[i],
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      );
+                                    }),
                                   ),
-                                );
-                              }),
+                                  Row(
+                                    children: List.generate(totalColumns,
+                                        (weekIndex) {
+                                      return Column(
+                                        children: List.generate(totalRows,
+                                            (dayIndex) {
+                                          return DayGridBox(
+                                              portait: portrait,
+                                              startDate: startDate,
+                                              year: year,
+                                              weekIndex: weekIndex,
+                                              dayIndex: dayIndex);
+                                        }),
+                                      );
+                                    }),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Row(
-                              children:
-                                  List.generate(totalColumns, (weekIndex) {
-                                return Column(
-                                  children:
-                                      List.generate(totalRows, (dayIndex) {
-                                    return DayGridBox(
-                                        portait: portrait,
-                                        startDate: startDate,
-                                        year: year,
-                                        weekIndex: weekIndex,
-                                        dayIndex: dayIndex);
-                                  }),
-                                );
-                              }),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           );
   }
 }

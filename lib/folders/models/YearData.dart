@@ -26,7 +26,7 @@ class YearData {
     };
   }
 
-  factory YearData.fromMap(Map<String, dynamic> map) {
+  factory YearData.fromMap(Map  map) {
     return YearData(
       year: map['year'] as String,
       monthlyDataList: List<MonthlyData>.from(

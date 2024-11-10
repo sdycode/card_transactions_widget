@@ -60,7 +60,19 @@ class DataService {
     if (data != null) {
       allYearsData[year] = data;
     }
+    print(" allYearsData[year] ${allYearsData[year] != null}");
     return data;
+  }
+
+  Future<bool> loadCompleteData() async {
+    if (DataService.instance.allYearsData.length>=3) {
+      return true;
+    }
+    await Future.forEach(DataService.instance.dataFilePaths.keys.toList(),
+        (year) async {
+      await loadYearlyTransactionsJson(year);
+    });
+    return true;
   }
 
   /// Function to be executed in an isolate to load and parse JSON file.

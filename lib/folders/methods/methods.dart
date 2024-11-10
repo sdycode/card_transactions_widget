@@ -7,5 +7,6 @@ export 'check_orientation.dart';
 export 'formatdates.dart';
 export 'getBoxColorForAmount.dart';
 export 'getTrnasacationForDay.dart';
+export 'loaddatafromfirebase.dart';
 export 'showTranscationsList.dart';
 export 'snackbars.dart';
