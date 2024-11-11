@@ -18,3 +18,5 @@ samples, guidance on mobile development, and a full API reference.
 Flutter web app demo
 
 https://youtu.be/coeMqh9R_eo
+[![Watch the video](https://img.youtube.com/vi/coeMqh9R_eo/maxresdefault.jpg)](https://youtu.be/coeMqh9R_eo)
+
