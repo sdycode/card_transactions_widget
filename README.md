@@ -15,6 +15,14 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+
+Web app link : 
+## View the Project
+
+[Check out the Credit Card Transactions Dashboard](https://sdycode.github.io/credit_card_transactions/)
+
+https://sdycode.github.io/credit_card_transactions/
+
 Flutter web app demo
 
 https://youtu.be/coeMqh9R_eo
