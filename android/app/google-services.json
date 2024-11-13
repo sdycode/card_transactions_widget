@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "49513463331",
+    "project_id": "transaction-2a585",
+    "storage_bucket": "transaction-2a585.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49513463331:android:ed248f732caceb02c67b96",
+        "android_client_info": {
+          "package_name": "com.example.transcation_history"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJjvtbSxg67UqYDmzxAzkjpWXh18Syxj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
